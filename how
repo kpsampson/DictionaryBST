@@ -1,0 +1,924 @@
+[33mcommit aaa116413457d55ad9992707d77a45c938a5856c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Kylie Sampson <kpsampson@wisc.edu>
+Date:   Fri Oct 4 20:11:48 2019 -0500
+
+    adding files
+
+[1mdiff --git a/.classpath b/.classpath[m
+[1mnew file mode 100644[m
+[1mindex 0000000..51a8bba[m
+[1m--- /dev/null[m
+[1m+++ b/.classpath[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<classpath>[m
+[32m+[m	[32m<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>[m
+[32m+[m	[32m<classpathentry kind="src" path="src"/>[m
+[32m+[m	[32m<classpathentry kind="output" path="bin"/>[m
+[32m+[m[32m</classpath>[m
+[1mdiff --git a/.project b/.project[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5c52521[m
+[1m--- /dev/null[m
+[1m+++ b/.project[m
+[36m@@ -0,0 +1,17 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<projectDescription>[m
+[32m+[m	[32m<name>P9 Dictionary Using BST</name>[m
+[32m+[m	[32m<comment></comment>[m
+[32m+[m	[32m<projects>[m
+[32m+[m	[32m</projects>[m
+[32m+[m	[32m<buildSpec>[m
+[32m+[m		[32m<buildCommand>[m
+[32m+[m			[32m<name>org.eclipse.jdt.core.javabuilder</name>[m
+[32m+[m			[32m<arguments>[m
+[32m+[m			[32m</arguments>[m
+[32m+[m		[32m</buildCommand>[m
+[32m+[m	[32m</buildSpec>[m
+[32m+[m	[32m<natures>[m
+[32m+[m		[32m<nature>org.eclipse.jdt.core.javanature</nature>[m
+[32m+[m	[32m</natures>[m
+[32m+[m[32m</projectDescription>[m
+[1mdiff --git a/.settings/org.eclipse.jdt.core.prefs b/.settings/org.eclipse.jdt.core.prefs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3a21537[m
+[1m--- /dev/null[m
+[1m+++ b/.settings/org.eclipse.jdt.core.prefs[m
+[36m@@ -0,0 +1,11 @@[m
+[32m+[m[32meclipse.preferences.version=1[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.codegen.unusedLocal=preserve[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.compliance=1.8[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.debug.lineNumber=generate[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.debug.localVariable=generate[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.debug.sourceFile=generate[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.problem.assertIdentifier=error[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.problem.enumIdentifier=error[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.source=1.8[m
+[1mdiff --git a/bin/Dictionary.class b/bin/Dictionary.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6ce23cd[m
+Binary files /dev/null and b/bin/Dictionary.class differ
+[1mdiff --git a/bin/DictionaryBST.class b/bin/DictionaryBST.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f49726d[m
+Binary files /dev/null and b/bin/DictionaryBST.class differ
+[1mdiff --git a/bin/DictionaryDriver.class b/bin/DictionaryDriver.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..2d95674[m
+Binary files /dev/null and b/bin/DictionaryDriver.class differ
+[1mdiff --git a/bin/DictionaryTests.class b/bin/DictionaryTests.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8083e6e[m
+Binary files /dev/null and b/bin/DictionaryTests.class differ
+[1mdiff --git a/bin/DictionaryWord.class b/bin/DictionaryWord.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..007c088[m
+Binary files /dev/null and b/bin/DictionaryWord.class differ
+[1mdiff --git a/src/Dictionary.java b/src/Dictionary.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..31cac03[m
+[1m--- /dev/null[m
+[1m+++ b/src/Dictionary.java[m
+[36m@@ -0,0 +1,78 @@[m
+[32m+[m
+[32m+[m[32m//////////////////// ALL ASSIGNMENTS INCLUDE THIS SECTION /////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Title:           P9 Dictionary Using BST[m
+[32m+[m[32m// Files:           DictionaryTests.java, Dictionary.java, DictionaryWord.java,[m[41m [m
+[32m+[m[32m//					DictionaryBST.java, DictionaryDriver.java[m
+[32m+[m[32m// Course:          006, Spring, 2019[m
+[32m+[m[32m//[m
+[32m+[m[32m// Author:          Kylie Sampson[m
+[32m+[m[32m// Email:           kpsampson@wisc.edu[m[41m [m
+[32m+[m[32m// Lecturer's Name: Mouna Ayari Ben Hadj Kacem[m[41m [m
+[32m+[m[32m//[m
+[32m+[m[32m//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ///////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Partner Name:    NONE[m
+[32m+[m[32m// Partner Email:   NONE[m
+[32m+[m[32m// Partner Lecturer's Name: NONE[m
+[32m+[m[32m//[m[41m [m
+[32m+[m[32m// VERIFY THE FOLLOWING BY PLACING AN X NEXT TO EACH TRUE STATEMENT:[m
+[32m+[m[32m//   ___ Write-up states that pair programming is allowed for this assignment.[m
+[32m+[m[32m//   ___ We have both read and understand the course Pair Programming Policy.[m
+[32m+[m[32m//   ___ We have registered our team prior to the team registration deadline.[m
+[32m+[m[32m//[m
+[32m+[m[32m///////////////////////////// CREDIT OUTSIDE HELP /////////////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Students who get help from sources other than their partner must fully[m[41m [m
+[32m+[m[32m// acknowledge and credit those sources of help here.  Instructors and TAs do[m[41m [m
+[32m+[m[32m// not need to be credited here, but tutors, friends, relatives, room mates,[m[41m [m
+[32m+[m[32m// strangers, and others do.  If you received no outside help from either type[m
+[32m+[m[32m//  of source, then please explicitly indicate NONE.[m
+[32m+[m[32m//[m
+[32m+[m[32m// Persons:         NONE[m
+[32m+[m[32m// Online Sources:  NONE[m
+[32m+[m[32m//[m
+[32m+[m[32m/////////////////////////////// 80 COLUMNS WIDE ///////////////////////////////[m
+[32m+[m[32m/**[m
+[32m+[m[32m * An interface for creating a dictionary of words with definitions[m
+[32m+[m[32m *[m[41m [m
+[32m+[m[32m * @author Kylie Sampson[m
+[32m+[m[32m *[m
+[32m+[m[32m */[m
+[32m+[m[32mpublic interface Dictionary {[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Checks whether the dictionary is empty or not[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return true - if empty, false otherwise[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic boolean isEmpty();[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Adds this word definition (word and the provided meaning) to the dictionary.[m
+[32m+[m	[32m * Returns true if the word was successfully added to this dictionary. Returns[m
+[32m+[m	[32m * false if the word was already in the dictionary.[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param word    - word to be added to dictionary[m
+[32m+[m	[32m * @param meaning - definition of word being added\[m
+[32m+[m	[32m * @throws IllegalArgumentException - if either word or meaning is null or an[m
+[32m+[m	[32m *                                  empty String[m
+[32m+[m	[32m * @return true - word was successfully added, false if the word was not added[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic boolean addWord(String word, String meaning) throws IllegalArgumentException;[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Returns the meaning of the word s if it is present in this dictionary. Throws[m
+[32m+[m	[32m * a NoSuchElementException if the word s was not found in this dictionary[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param s - the word thats definition is being found[m
+[32m+[m	[32m * @return definition of string s[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic String lookup(String s);[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Returns the number of words in the dicitonary[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return the number of words stored in this dictionary[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic int size();[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/DictionaryBST.java b/src/DictionaryBST.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..12077ed[m
+[1m--- /dev/null[m
+[1m+++ b/src/DictionaryBST.java[m
+[36m@@ -0,0 +1,262 @@[m
+[32m+[m
+[32m+[m[32m//////////////////// ALL ASSIGNMENTS INCLUDE THIS SECTION /////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Title:           P9 Dictionary Using BST[m
+[32m+[m[32m// Files:           DictionaryTests.java, Dictionary.java, DictionaryWord.java,[m[41m [m
+[32m+[m[32m//					DictionaryBST.java, DictionaryDriver.java[m
+[32m+[m[32m// Course:          006, Spring, 2019[m
+[32m+[m[32m//[m
+[32m+[m[32m// Author:          Kylie Sampson[m
+[32m+[m[32m// Email:           kpsampson@wisc.edu[m[41m [m
+[32m+[m[32m// Lecturer's Name: Mouna Ayari Ben Hadj Kacem[m[41m [m
+[32m+[m[32m//[m
+[32m+[m[32m//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ///////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Partner Name:    NONE[m
+[32m+[m[32m// Partner Email:   NONE[m
+[32m+[m[32m// Partner Lecturer's Name: NONE[m
+[32m+[m[32m//[m[41m [m
+[32m+[m[32m// VERIFY THE FOLLOWING BY PLACING AN X NEXT TO EACH TRUE STATEMENT:[m
+[32m+[m[32m//   ___ Write-up states that pair programming is allowed for this assignment.[m
+[32m+[m[32m//   ___ We have both read and understand the course Pair Programming Policy.[m
+[32m+[m[32m//   ___ We have registered our team prior to the team registration deadline.[m
+[32m+[m[32m//[m
+[32m+[m[32m///////////////////////////// CREDIT OUTSIDE HELP /////////////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Students who get help from sources other than their partner must fully[m[41m [m
+[32m+[m[32m// acknowledge and credit those sources of help here.  Instructors and TAs do[m[41m [m
+[32m+[m[32m// not need to be credited here, but tutors, friends, relatives, room mates,[m[41m [m
+[32m+[m[32m// strangers, and others do.  If you received no outside help from either type[m
+[32m+[m[32m//  of source, then please explicitly indicate NONE.[m
+[32m+[m[32m//[m
+[32m+[m[32m// Persons:         NONE[m
+[32m+[m[32m// Online Sources:  NONE[m
+[32m+[m[32m//[m
+[32m+[m[32m/////////////////////////////// 80 COLUMNS WIDE ///////////////////////////////[m
+[32m+[m[32mimport java.util.ArrayList;[m
+[32m+[m[32mimport java.util.NoSuchElementException;[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Models the BST tree that organizes the DictionaryWords in alphabetical order[m
+[32m+[m[32m *[m[41m [m
+[32m+[m[32m * @author Kylie Sampson[m
+[32m+[m[32m *[m
+[32m+[m[32m */[m
+[32m+[m[32mpublic class DictionaryBST implements Dictionary {[m
+[32m+[m	[32mprivate DictionaryWord root;[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * This should be the only constructor of this class. Creates an empty[m
+[32m+[m	[32m * dictionaryBST.[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic DictionaryBST() {[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Checks if the dictionary has any words added.[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return true - if the node is empty and the dictionary has no words, false if[m
+[32m+[m	[32m *         the node has been assigned to the word added first[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic boolean isEmpty() {[m
+[32m+[m		[32mif (root == null) {[m
+[32m+[m			[32mreturn true;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn false;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Creates new word using the arguments. This word is then passed to[m
+[32m+[m	[32m * addWordHelper which finds the proper location to store the word in the tree[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return true if the word was added, false if there was an issue adding the[m
+[32m+[m	[32m *         word[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic boolean addWord(String word, String meaning) {[m
+[32m+[m		[32mDictionaryWord addThisWord = new DictionaryWord(word, meaning);[m
+[32m+[m		[32mif (root == null) { // If no words had been previously added[m
+[32m+[m			[32mroot = addThisWord;[m
+[32m+[m			[32mreturn true;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn addWordHelper(addThisWord, root);[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Recursive helper method to add newWord in the subtree rooted at node[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param newWordNode a new DictionaryWord to be added to this dictionaryBST[m
+[32m+[m	[32m * @param current     the current DictionaryWord that is the root of the subtree[m
+[32m+[m	[32m *                    where newWord will be inserted[m
+[32m+[m	[32m * @return true if the newWordNode is successfully added to this dictionary,[m
+[32m+[m	[32m *         false otherwise[m
+[32m+[m	[32m */[m
+[32m+[m	[32mprivate static boolean addWordHelper(DictionaryWord newWordNode, DictionaryWord current) {[m
+[32m+[m		[32mif (newWordNode.getWord().compareToIgnoreCase(current.getWord()) > 0) { // if current is less than newNode[m
+[32m+[m			[32mif (current.getRightChild() != null) { // if there is a node lower[m
+[32m+[m				[32mreturn addWordHelper(newWordNode, current.getRightChild()); // the sizes are compared again[m
+[32m+[m			[32m} else { // Once there are no children[m
+[32m+[m				[32mcurrent.setRightChild(newWordNode); // the node is set[m
+[32m+[m				[32mreturn true;[m
+[32m+[m			[32m}[m
+[32m+[m		[32m}[m
+[32m+[m		[32mif (newWordNode.getWord().compareToIgnoreCase(current.getWord()) < 0) { // if current is greater[m
+[32m+[m			[32mif (current.getLeftChild() != null) {[m
+[32m+[m				[32mreturn addWordHelper(newWordNode, current.getLeftChild());[m
+[32m+[m			[32m} else {[m
+[32m+[m				[32mcurrent.setLeftChild(newWordNode);[m
+[32m+[m				[32mreturn true;[m
+[32m+[m			[32m}[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn false; // If they are equal, word cannot be added[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Makes a call to lookupHelper, a recursive method that finds the corresponding[m
+[32m+[m	[32m * word.[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return String- the definition of the word searched[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic String lookup(String s) {[m
+[32m+[m		[32mreturn lookupHelper(s, root);[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Recursive helper method to lookup a word s in the subtree rooted at current[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param s       String that represents a word[m
+[32m+[m	[32m * @param current pointer to the current DictionaryWord within this dictionary[m
+[32m+[m	[32m * @return the meaning of the word s if it is present in this dictionary[m
+[32m+[m	[32m * @throws NoSuchElementException if s is not found in this dictionary[m
+[32m+[m	[32m */[m
+[32m+[m	[32mprivate static String lookupHelper(String s, DictionaryWord current) throws NoSuchElementException {[m
+[32m+[m		[32mif (current == null) {[m
+[32m+[m			[32mthrow new NoSuchElementException("There are no definitions in this empty dictionary.");[m
+[32m+[m		[32m}[m
+[32m+[m		[32mif (s.compareToIgnoreCase(current.getWord()) == 0) { // base case[m
+[32m+[m			[32mreturn current.getMeaning();[m
+[32m+[m		[32m}[m
+[32m+[m		[32mif (s.compareToIgnoreCase(current.getWord()) > 0) {[m
+[32m+[m			[32mif (current.getRightChild() != null) {[m
+[32m+[m				[32mreturn lookupHelper(s, current.getRightChild()); // compares to child[m
+[32m+[m			[32m} else {[m
+[32m+[m				[32mthrow new NoSuchElementException("No definition found for the word " + s);[m
+[32m+[m			[32m}[m
+[32m+[m		[32m} else if (s.compareToIgnoreCase(current.getWord()) < 0) {[m
+[32m+[m			[32mif (current.getLeftChild() != null) {[m
+[32m+[m				[32mreturn lookupHelper(s, current.getLeftChild()); // compares to child[m
+[32m+[m			[32m} else {[m
+[32m+[m				[32mthrow new NoSuchElementException("No definition found for the word " + s);[m
+[32m+[m			[32m}[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn null;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Makes a call to the recursive method that returns an int that counts the size[m
+[32m+[m	[32m * of the tree[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic int size() {[m
+[32m+[m		[32mif (root == null) {[m
+[32m+[m			[32mreturn 0;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn sizeHelper(root);[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Recursive helper method that returns the number of dictionary words stored in[m
+[32m+[m	[32m * the subtree rooted at current[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param current current DictionaryWord within this dictionaryBST[m
+[32m+[m	[32m * @return the size of the subtree rooted at current[m
+[32m+[m	[32m */[m
+[32m+[m	[32mprivate static int sizeHelper(DictionaryWord current) {[m
+[32m+[m		[32mint count = 0;[m
+[32m+[m
+[32m+[m		[32mif (current.getLeftChild() != null) { // If the node has a child, the method is called again, searching for[m
+[32m+[m												[32m// either a right child to add to the count[m
+[32m+[m			[32mcount += sizeHelper(current.getLeftChild());[m
+[32m+[m		[32m}[m
+[32m+[m		[32mcount++;[m
+[32m+[m
+[32m+[m		[32mif (current.getRightChild() != null) {[m
+[32m+[m			[32mcount += sizeHelper(current.getRightChild());[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn count;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Computes and returns the height of this dictionaryBST, as the number of nodes[m
+[32m+[m	[32m * from root to the deepest leaf DictionaryWord node.[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return the height of this Binary Search Tree counting the number of[m
+[32m+[m	[32m *         DictionaryWord nodes[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic int height() {[m
+[32m+[m		[32mif (root == null) {[m
+[32m+[m			[32mreturn 0;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn heightHelper(root);[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Recursive helper method that computes the height of the subtree rooted at[m
+[32m+[m	[32m * current[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param current pointer to the current DictionaryWord within this[m
+[32m+[m	[32m *                DictionaryBST[m
+[32m+[m	[32m * @return height of the subtree rooted at current counting the number of[m
+[32m+[m	[32m *         DictionaryWord nodes from the current node to the deepest leaf in the[m
+[32m+[m	[32m *         subtree rooted at current[m
+[32m+[m	[32m */[m
+[32m+[m	[32mprivate static int heightHelper(DictionaryWord current) {[m
+[32m+[m		[32mint count = 1;[m
+[32m+[m
+[32m+[m		[32m// if current has a right or left child the method is called again, adding 1 to[m
+[32m+[m		[32m// the height[m
+[32m+[m		[32mif (current.getLeftChild() != null) {[m
+[32m+[m			[32mcount = heightHelper(current.getLeftChild()) + 1;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mif (current.getRightChild() != null) {[m
+[32m+[m			[32mcount = heightHelper(current.getLeftChild()) + 1;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn count;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Returns all the words within this dictionary sorted from A to Z[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return an ArrayList that contains all the words within this dictionary[m
+[32m+[m	[32m *         sorted in the ascendant order[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic ArrayList<String> getAllWords() {[m
+[32m+[m		[32mif (root == null) {[m
+[32m+[m			[32mreturn new ArrayList<String>();[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn getAllWordsHelper(root);[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Recursive Helper method that returns a list of all the words stored in the[m
+[32m+[m	[32m * subtree rooted at current[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param current pointer to the current DictionaryWord within this[m
+[32m+[m	[32m *                dictionaryBST[m
+[32m+[m	[32m * @return an ArrayList of all the words stored in the subtree rooted at current[m
+[32m+[m	[32m */[m
+[32m+[m	[32mprivate static ArrayList<String> getAllWordsHelper(DictionaryWord current) {[m
+[32m+[m		[32mArrayList<String> list = new ArrayList<String>();[m
+[32m+[m
+[32m+[m		[32mif (current.getLeftChild() != null) { // checks for left child first, if it contains one, it calls again[m
+[32m+[m			[32mlist.addAll(getAllWordsHelper(current.getLeftChild()));[m
+[32m+[m		[32m}[m
+[32m+[m		[32mlist.add(current.getWord()); // base case[m
+[32m+[m
+[32m+[m		[32mif (current.getRightChild() != null) { // once the most left has been added, moves up in the tree adding right[m
+[32m+[m												[32m// nodes[m
+[32m+[m			[32mlist.addAll(getAllWordsHelper(current.getRightChild())); // If a right node is found, method called again[m
+[32m+[m																		[32m// and checks left before moving on[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn list;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/DictionaryDriver.java b/src/DictionaryDriver.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fa55489[m
+[1m--- /dev/null[m
+[1m+++ b/src/DictionaryDriver.java[m
+[36m@@ -0,0 +1,131 @@[m
+[32m+[m[32mimport java.util.ArrayList;[m
+[32m+[m[32mimport java.util.Scanner;[m
+[32m+[m
+[32m+[m[32m//////////////////// ALL ASSIGNMENTS INCLUDE THIS SECTION /////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Title:           P9 Dictionary Using BST[m
+[32m+[m[32m// Files:           DictionaryTests.java, Dictionary.java, DictionaryWord.java,[m[41m [m
+[32m+[m[32m//					DictionaryBST.java, DictionaryDriver.java[m
+[32m+[m[32m// Course:          006, Spring, 2019[m
+[32m+[m[32m//[m
+[32m+[m[32m// Author:          Kylie Sampson[m
+[32m+[m[32m// Email:           kpsampson@wisc.edu[m[41m [m
+[32m+[m[32m// Lecturer's Name: Mouna Ayari Ben Hadj Kacem[m[41m [m
+[32m+[m[32m//[m
+[32m+[m[32m//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ///////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Partner Name:    NONE[m
+[32m+[m[32m// Partner Email:   NONE[m
+[32m+[m[32m// Partner Lecturer's Name: NONE[m
+[32m+[m[32m//[m[41m [m
+[32m+[m[32m// VERIFY THE FOLLOWING BY PLACING AN X NEXT TO EACH TRUE STATEMENT:[m
+[32m+[m[32m//   ___ Write-up states that pair programming is allowed for this assignment.[m
+[32m+[m[32m//   ___ We have both read and understand the course Pair Programming Policy.[m
+[32m+[m[32m//   ___ We have registered our team prior to the team registration deadline.[m
+[32m+[m[32m//[m
+[32m+[m[32m///////////////////////////// CREDIT OUTSIDE HELP /////////////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Students who get help from sources other than their partner must fully[m[41m [m
+[32m+[m[32m// acknowledge and credit those sources of help here.  Instructors and TAs do[m[41m [m
+[32m+[m[32m// not need to be credited here, but tutors, friends, relatives, room mates,[m[41m [m
+[32m+[m[32m// strangers, and others do.  If you received no outside help from either type[m
+[32m+[m[32m//  of source, then please explicitly indicate NONE.[m
+[32m+[m[32m//[m
+[32m+[m[32m// Persons:         NONE[m
+[32m+[m[32m// Online Sources:  NONE[m
+[32m+[m[32m//[m
+[32m+[m[32m/////////////////////////////// 80 COLUMNS WIDE ///////////////////////////////[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Driver for the dictionary. Displays menu and organizes user input[m
+[32m+[m[32m *[m[41m [m
+[32m+[m[32m * @author Kylie Sampson[m
+[32m+[m[32m *[m
+[32m+[m[32m */[m
+[32m+[m[32mpublic class DictionaryDriver {[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Handles user input and makes call to proper method to perform desired action[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param args[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic static void main(String[] args) {[m
+[32m+[m		[32mDictionaryBST dictionary = new DictionaryBST();[m
+[32m+[m		[32mScanner scnr = new Scanner(System.in);[m
+[32m+[m		[32mString input = "";[m
+[32m+[m		[32mchar character = ' ';[m
+[32m+[m		[32mwhile (character != 'q') {[m
+[32m+[m			[32mtry {[m
+[32m+[m				[32mprintMenu();[m
+[32m+[m				[32mSystem.out.print("Please enter your command: ");[m
+[32m+[m				[32minput = scnr.next().toLowerCase(); //first char of first word used in determining action[m
+[32m+[m				[32mcharacter = input.charAt(0);[m
+[32m+[m[41m				[m
+[32m+[m				[32m//Adds the word in correct location[m
+[32m+[m				[32mif (character == 'a' || character == 'A') {[m
+[32m+[m					[32mString word = scnr.next();[m
+[32m+[m					[32mString meaning = scnr.nextLine();[m
+[32m+[m					[32mboolean added = dictionary.addWord(word, meaning);[m[41m [m
+[32m+[m					[32mif (!added) {[m
+[32m+[m						[32mSystem.out.println("WARNING: failed to add duplicate word: " + word + " for duplicate entry");[m
+[32m+[m					[32m}[m
+[32m+[m				[32m}[m
+[32m+[m				[32m//Prints the word with its definition[m
+[32m+[m				[32melse if (character == 'l') {[m
+[32m+[m					[32mString word = scnr.next();[m
+[32m+[m					[32mString meaning = dictionary.lookup(word);[m[41m [m
+[32m+[m					[32mSystem.out.println(word + ":" + meaning);[m
+[32m+[m				[32m}[m
+[32m+[m				[32m//Prints the all words in order[m
+[32m+[m				[32melse if (character == 'g') {[m
+[32m+[m					[32mArrayList<String> arrayToPrint = dictionary.getAllWords();[m
+[32m+[m					[32mif (arrayToPrint.isEmpty()) {[m
+[32m+[m						[32mSystem.out.println("Dictionary is empty.");[m
+[32m+[m					[32m} else {[m
+[32m+[m						[32mString print = "";[m
+[32m+[m						[32mfor (String word : arrayToPrint) {[m[41m [m
+[32m+[m							[32mprint = print + " " + word + ",";[m
+[32m+[m						[32m}[m
+[32m+[m						[32mprint = print.substring(0, print.length() - 1).trim();[m
+[32m+[m						[32mSystem.out.println(print);[m
+[32m+[m					[32m}[m
+[32m+[m				[32m}[m[41m [m
+[32m+[m				[32m//Returns the number of words in the dictionary[m
+[32m+[m				[32melse if (character == 's') {[m
+[32m+[m					[32mSystem.out.println(dictionary.size());[m
+[32m+[m				[32m}[m[41m [m
+[32m+[m				[32m//Returns the height (in nodes)[m
+[32m+[m				[32melse if (character == 'h') {[m
+[32m+[m					[32mSystem.out.println(dictionary.height());[m
+[32m+[m				[32m}[m[41m [m
+[32m+[m				[32m//Quits the program[m
+[32m+[m				[32melse if (character == 'q') {[m
+[32m+[m					[32mSystem.out.println("============================== END ===================================");[m
+[32m+[m					[32mbreak;[m
+[32m+[m				[32m}[m[41m [m
+[32m+[m				[32m//If the user enters a command with no assigned operation[m
+[32m+[m				[32melse {[m
+[32m+[m					[32mSystem.out.println("Command not recognized. Please enter a valid command");[m
+[32m+[m				[32m}[m
+[32m+[m
+[32m+[m			[32m} catch (Exception e) { //Prints the message from various exceptions[m
+[32m+[m				[32mSystem.out.println(e.getLocalizedMessage());[m
+[32m+[m			[32m}[m
+[32m+[m		[32m}[m
+[32m+[m		[32mscnr.close();[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Prints menu when called[m
+[32m+[m	[32m */[m
+[32m+[m	[32mprivate static void printMenu() {[m
+[32m+[m		[32mSystem.out.println("=========================== Dictionary ============================\r\n"[m
+[32m+[m				[32m+ "Enter one of the following options:\r\n"[m
+[32m+[m				[32m+ "[A <word> <meaning>] to add a new word and its definition in the dictionary\r\n"[m
+[32m+[m				[32m+ "[L <word>] to search a word in the dictionary and display its definition\r\n"[m
+[32m+[m				[32m+ "[G] to print all the words in the dictionary in sorted order\r\n"[m
+[32m+[m				[32m+ "[S] to get the count of all words in the dictionary\r\n"[m
+[32m+[m				[32m+ "[H] to get the height of this dictionary implemented as a binary search tree\r\n"[m
+[32m+[m				[32m+ "[Q] to quit the program\r\n"[m
+[32m+[m				[32m+ "======================================================================");[m
+[32m+[m	[32m}[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/DictionaryTests.java b/src/DictionaryTests.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3aaf9f2[m
+[1m--- /dev/null[m
+[1m+++ b/src/DictionaryTests.java[m
+[36m@@ -0,0 +1,214 @@[m
+[32m+[m[32mimport java.util.ArrayList;[m
+[32m+[m
+[32m+[m[32m//////////////////// ALL ASSIGNMENTS INCLUDE THIS SECTION /////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Title:           P9 Dictionary Using BST[m
+[32m+[m[32m// Files:           DictionaryTests.java, Dictionary.java, DictionaryWord.java,[m[41m [m
+[32m+[m[32m//					DictionaryBST.java, DictionaryDriver.java[m
+[32m+[m[32m// Course:          006, Spring, 2019[m
+[32m+[m[32m//[m
+[32m+[m[32m// Author:          Kylie Sampson[m
+[32m+[m[32m// Email:           kpsampson@wisc.edu[m[41m [m
+[32m+[m[32m// Lecturer's Name: Mouna Ayari Ben Hadj Kacem[m[41m [m
+[32m+[m[32m//[m
+[32m+[m[32m//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ///////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Partner Name:    NONE[m
+[32m+[m[32m// Partner Email:   NONE[m
+[32m+[m[32m// Partner Lecturer's Name: NONE[m
+[32m+[m[32m//[m[41m [m
+[32m+[m[32m// VERIFY THE FOLLOWING BY PLACING AN X NEXT TO EACH TRUE STATEMENT:[m
+[32m+[m[32m//   ___ Write-up states that pair programming is allowed for this assignment.[m
+[32m+[m[32m//   ___ We have both read and understand the course Pair Programming Policy.[m
+[32m+[m[32m//   ___ We have registered our team prior to the team registration deadline.[m
+[32m+[m[32m//[m
+[32m+[m[32m///////////////////////////// CREDIT OUTSIDE HELP /////////////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Students who get help from sources other than their partner must fully[m[41m [m
+[32m+[m[32m// acknowledge and credit those sources of help here.  Instructors and TAs do[m[41m [m
+[32m+[m[32m// not need to be credited here, but tutors, friends, relatives, room mates,[m[41m [m
+[32m+[m[32m// strangers, and others do.  If you received no outside help from either type[m
+[32m+[m[32m//  of source, then please explicitly indicate NONE.[m
+[32m+[m[32m//[m
+[32m+[m[32m// Persons:         NONE[m
+[32m+[m[32m// Online Sources:  NONE[m
+[32m+[m[32m//[m
+[32m+[m[32m/////////////////////////////// 80 COLUMNS WIDE ///////////////////////////////[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Tests the functionality of methods in program by running a series of test[m
+[32m+[m[32m *[m[41m [m
+[32m+[m[32m * @author Kylie Sampson[m
+[32m+[m[32m *[m
+[32m+[m[32m */[m
+[32m+[m[32mpublic class DictionaryTests {[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Calls various tests to ensure the functionality of the code is working as[m
+[32m+[m	[32m * expected[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param args[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic static void main(String[] args) {[m
+[32m+[m		[32mSystem.out.println("testGetterMethods()   " + testGetterMethods());[m
+[32m+[m		[32mSystem.out.println("testAddandArrayList() " + testAddandArrayList());[m
+[32m+[m		[32mSystem.out.println("testSize()            " + testSize());[m
+[32m+[m		[32mSystem.out.println("testLookup()          " + testLookup());[m
+[32m+[m		[32mSystem.out.println("testHeight()          " + testHeight());[m
+[32m+[m		[32mSystem.out.println("testIsEmpty()         " + testIsEmpty());[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Test the ability to retrieve the name and meaning of a DictionaryWord created[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return true if test is passed, false otherwise[m
+[32m+[m	[32m */[m
+[32m+[m	[32mprivate static boolean testGetterMethods() {[m
+[32m+[m		[32mDictionaryWord test1 = new DictionaryWord("Kylie", "A fantastic programmer");[m
+[32m+[m
+[32m+[m		[32mif (!test1.getWord().equals("Kylie")) {[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mif (!test1.getMeaning().equals("A fantastic programmer")) {[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn true;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Test the functionality of adding words to the dictionary, as well as the[m
+[32m+[m	[32m * order they are returned in an arrayList. This also ensures that the words are[m
+[32m+[m	[32m * stored in the proper tree location.[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return true if test is passed, false otherwise[m
+[32m+[m	[32m */[m
+[32m+[m	[32mprivate static boolean testAddandArrayList() {[m
+[32m+[m		[32mDictionaryBST test2 = new DictionaryBST();[m
+[32m+[m		[32mtest2.addWord("dog", "love");[m
+[32m+[m		[32mtest2.addWord("cat", "scary");[m
+[32m+[m		[32mtest2.addWord("rabbit", "cute");[m
+[32m+[m
+[32m+[m		[32mArrayList<String> test2ArrayList = test2.getAllWords();[m
+[32m+[m
+[32m+[m		[32m// words should be in the array in alphabetical order[m
+[32m+[m		[32mif (!test2ArrayList.get(0).equals("cat"))[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32mif (!test2ArrayList.get(1).equals("dog"))[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32mif (!test2ArrayList.get(2).equals("rabbit"))[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32mreturn true;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Test the size function of the array with various sizes. First checks with 0[m
+[32m+[m	[32m * words, then 3, then 5.[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return true if test is passed, false otherwise[m
+[32m+[m	[32m */[m
+[32m+[m	[32mprivate static boolean testSize() {[m
+[32m+[m		[32mDictionaryBST test3 = new DictionaryBST();[m
+[32m+[m
+[32m+[m		[32m// Size should be 0[m
+[32m+[m		[32mif (test3.size() != 0)[m
+[32m+[m			[32mreturn false;[m
+[32m+[m
+[32m+[m		[32m// Adds 3 words[m
+[32m+[m		[32mtest3.addWord("word1", "definition");[m
+[32m+[m		[32mtest3.addWord("word2", "definition");[m
+[32m+[m		[32mtest3.addWord("word3", "definition");[m
+[32m+[m
+[32m+[m		[32m// Checks that size is now 3[m
+[32m+[m		[32mif (test3.size() != 3)[m
+[32m+[m			[32mreturn false;[m
+[32m+[m
+[32m+[m		[32m// Adds 2 words[m
+[32m+[m		[32mtest3.addWord("word4", "definition");[m
+[32m+[m		[32mtest3.addWord("word5", "definition");[m
+[32m+[m
+[32m+[m		[32m// Checks that the size is now 5[m
+[32m+[m		[32mif (test3.size() != 5)[m
+[32m+[m			[32mreturn false;[m
+[32m+[m
+[32m+[m		[32mreturn true;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Test the ability to look up a word, and have the correct definition be[m
+[32m+[m	[32m * returned[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return true if test passed, false otherwise[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic static boolean testLookup() {[m
+[32m+[m		[32mDictionaryBST test4 = new DictionaryBST();[m
+[32m+[m
+[32m+[m		[32mtest4.addWord("word1", "definition1");[m
+[32m+[m		[32mtest4.addWord("word2", "definition2");[m
+[32m+[m		[32mtest4.addWord("word3", "definition3");[m
+[32m+[m
+[32m+[m		[32mif (!test4.lookup("word1").equals("definition1"))[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32mif (!test4.lookup("word3").equals("definition3"))[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32mif (!test4.lookup("word2").equals("definition2"))[m
+[32m+[m			[32mreturn false;[m
+[32m+[m
+[32m+[m		[32mreturn true;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Test the height of the tree with various elements.[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return true if test passed, false otherwise[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic static boolean testHeight() {[m
+[32m+[m		[32mDictionaryBST test5 = new DictionaryBST();[m
+[32m+[m
+[32m+[m		[32m// Height with no words should be 0[m
+[32m+[m		[32mif (test5.height() != 0) {[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32m}[m
+[32m+[m
+[32m+[m		[32m// The root node should have a height of 1[m
+[32m+[m		[32mtest5.addWord("Koala", "root");[m
+[32m+[m		[32mif (test5.height() != 1) {[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32m}[m
+[32m+[m
+[32m+[m		[32m// The height should now be 2[m
+[32m+[m		[32mtest5.addWord("iguana", "koala left child");[m
+[32m+[m		[32mif (test5.height() != 2) {[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32m}[m
+[32m+[m
+[32m+[m		[32m// The height should not change because monkey is on the same level[m
+[32m+[m		[32mtest5.addWord("monkey", "koala right child");[m
+[32m+[m		[32mif (test5.height() != 2) {[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32m}[m
+[32m+[m
+[32m+[m		[32m// Adds 3 words that are all less than the previous. Adds 3 to height[m
+[32m+[m		[32mtest5.addWord("hippo", "iguana left child");[m
+[32m+[m		[32mtest5.addWord("giraffe", "hippo left child");[m
+[32m+[m		[32mtest5.addWord("fish", "giraffe left child");[m
+[32m+[m		[32mif (test5.height() != 5) {[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn true;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Test the functionality of the isEmpty method before and after words are[m
+[32m+[m	[32m * added.[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return true if test passed, false otherwise[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic static boolean testIsEmpty() {[m
+[32m+[m		[32mDictionaryBST test6 = new DictionaryBST();[m
+[32m+[m		[32mif (!test6.isEmpty())[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32mtest6.addWord("word1", "definition");[m
+[32m+[m		[32mif (test6.isEmpty())[m
+[32m+[m			[32mreturn false;[m
+[32m+[m		[32mreturn true;[m
+[32m+[m	[32m}[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/DictionaryWord.java b/src/DictionaryWord.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..adc8a17[m
+[1m--- /dev/null[m
+[1m+++ b/src/DictionaryWord.java[m
+[36m@@ -0,0 +1,131 @@[m
+[32m+[m
+[32m+[m[32m//////////////////// ALL ASSIGNMENTS INCLUDE THIS SECTION /////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Title:           P9 Dictionary Using BST[m
+[32m+[m[32m// Files:           DictionaryTests.java, Dictionary.java, DictionaryWord.java,[m[41m [m
+[32m+[m[32m//					DictionaryBST.java, DictionaryDriver.java[m
+[32m+[m[32m// Course:          006, Spring, 2019[m
+[32m+[m[32m//[m
+[32m+[m[32m// Author:          Kylie Sampson[m
+[32m+[m[32m// Email:           kpsampson@wisc.edu[m[41m [m
+[32m+[m[32m// Lecturer's Name: Mouna Ayari Ben Hadj Kacem[m[41m [m
+[32m+[m[32m//[m
+[32m+[m[32m//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ///////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Partner Name:    NONE[m
+[32m+[m[32m// Partner Email:   NONE[m
+[32m+[m[32m// Partner Lecturer's Name: NONE[m
+[32m+[m[32m//[m[41m [m
+[32m+[m[32m// VERIFY THE FOLLOWING BY PLACING AN X NEXT TO EACH TRUE STATEMENT:[m
+[32m+[m[32m//   ___ Write-up states that pair programming is allowed for this assignment.[m
+[32m+[m[32m//   ___ We have both read and understand the course Pair Programming Policy.[m
+[32m+[m[32m//   ___ We have registered our team prior to the team registration deadline.[m
+[32m+[m[32m//[m
+[32m+[m[32m///////////////////////////// CREDIT OUTSIDE HELP /////////////////////////////[m
+[32m+[m[32m//[m
+[32m+[m[32m// Students who get help from sources other than their partner must fully[m[41m [m
+[32m+[m[32m// acknowledge and credit those sources of help here.  Instructors and TAs do[m[41m [m
+[32m+[m[32m// not need to be credited here, but tutors, friends, relatives, room mates,[m[41m [m
+[32m+[m[32m// strangers, and others do.  If you received no outside help from either type[m
+[32m+[m[32m//  of source, then please explicitly indicate NONE.[m
+[32m+[m[32m//[m
+[32m+[m[32m// Persons:         NONE[m
+[32m+[m[32m// Online Sources:  NONE[m
+[32m+[m[32m//[m
+[32m+[m[32m/////////////////////////////// 80 COLUMNS WIDE ///////////////////////////////[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Models a word in a dictionary. Word stored with a definition and references[m
+[32m+[m[32m * to the left and right child of the word[m
+[32m+[m[32m *[m[41m [m
+[32m+[m[32m * @author Kylie Sampson[m
+[32m+[m[32m *[m
+[32m+[m[32m */[m
+[32m+[m[32mpublic class DictionaryWord {[m
+[32m+[m	[32mprivate final String word; // word that represents the search key for this dictionary word[m
+[32m+[m	[32mprivate final String meaning; // The meaning of the word that this dictionary node defines[m
+[32m+[m	[32mprivate DictionaryWord leftChild; // The leftChild of the the current WebPageNode[m
+[32m+[m	[32mprivate DictionaryWord rightChild; // The rightChild of the the current WebPageNode[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * The following should be the only constructor for this class. Creates a new[m
+[32m+[m	[32m * dictionary word with the provided word and its meaning pair. Throws[m
+[32m+[m	[32m * IllegalArgumentException when the word or meaning are either references to an[m
+[32m+[m	[32m * empty string or null references.[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param word    - the word[m
+[32m+[m	[32m * @param meaning - the definition of the word[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic DictionaryWord(String word, String meaning) throws IllegalArgumentException {[m
+[32m+[m		[32mif (word == null || word.isEmpty()) {[m
+[32m+[m			[32mthrow new IllegalArgumentException("You must enter a word to add a word!");[m
+[32m+[m		[32m}[m
+[32m+[m		[32mif (meaning == null || meaning.isEmpty()) {[m
+[32m+[m			[32mthrow new IllegalArgumentException("WARNING: Syntax Error for [A <word> <meaning>] command line.");[m
+[32m+[m		[32m}[m
+[32m+[m		[32mthis.word = word;[m
+[32m+[m		[32mthis.meaning = meaning;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Getter for the left child of this dictionary word[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return leftChild of word[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic DictionaryWord getLeftChild() {[m
+[32m+[m		[32mreturn leftChild;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Setter for the left child of this dictionary word[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param leftChild - DictionaryWord to be assigned to leftChild[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic void setLeftChild(DictionaryWord leftChild) {[m
+[32m+[m		[32mthis.leftChild = leftChild;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Getter for the right child of this dictionary word[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return rightChild of word[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic DictionaryWord getRightChild() {[m
+[32m+[m		[32mreturn rightChild;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Setter for the right child of this dictionary word[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @param rightChild - DictionaryWord to be assigned to rightChild[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic void setRightChild(DictionaryWord rightChild) {[m
+[32m+[m		[32mthis.rightChild = rightChild;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Getter for the word of this dictionary word[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return word - word of the object[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic String getWord() {[m
+[32m+[m		[32mreturn word;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Getter for the meaning of the word of this dictionary word[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return meaning - definition of this word[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic String getMeaning() {[m
+[32m+[m		[32mreturn meaning;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Returns a String representation of this DictionaryWord[m
+[32m+[m	[32m *[m[41m [m
+[32m+[m	[32m * @return dictionary word with definition[m
+[32m+[m	[32m */[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn word + ": " + meaning; // Space is added here. Other spaces are trimmed prior to[m
+[32m+[m	[32m}[m
+[32m+[m[32m}[m
